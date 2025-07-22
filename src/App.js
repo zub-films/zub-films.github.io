@@ -1,10 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import fetchRemoteFilms from './loader/loader';
 import Card from './components/film_card';
 import { ThemeProvider } from 'antd-style';
-import { Input } from 'antd';
-import React, { useEffect, useState } from 'react';
+import { Typography, Input } from 'antd';
+import { useEffect, useState } from 'react';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -46,6 +46,7 @@ function App() {
   return (
     <ThemeProvider appearance={'auto'}>
       <div className="container mx-auto mt-4 p-4">
+        <Typography.Title level={2}>Записи стримов с фильмами с канала <a href='https://www.twitch.tv/zubarefff'>@zubarefff</a></Typography.Title>
         <div className="flex items-center mb-4">
           <Input
             placeholder="Введите название фильма"
@@ -78,6 +79,7 @@ function App() {
             </div>
           )}
         </div>
+        <Footer/>
       </div>
     </ThemeProvider>
   );
