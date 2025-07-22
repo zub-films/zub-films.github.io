@@ -1,26 +1,41 @@
 import logo from './logo.svg';
 import './App.css';
 import fetchRemoteFilms from './loader/loader';
+import Card from './components/film_card';
+import { ThemeProvider } from 'antd-style';
+import { Input } from 'antd';
+import React, { useEffect, useState } from 'react';
+
 
 function App() {
-  fetchRemoteFilms()
+  const [films, setFilms] = useState({});
+  const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    async function loadFilms() {
+      const data = await fetchRemoteFilms();
+      setFilms(data);
+    }
+    loadFilms();
+  }, []);
+
+  const filteredKeys = Object.keys(films).filter(key =>
+    key.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const films_cards = filteredKeys.map(key =>
+    <Card name={key} sources={films[key]} key={key}/>
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider appearance={'auto'}>
+      <Input
+        placeholder="Введите название фильма"
+        value={search}
+        onChange={e => setSearch(e.target.value)}
+      />
+      {films_cards}
+    </ThemeProvider>
   );
 }
 
