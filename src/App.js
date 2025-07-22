@@ -29,12 +29,18 @@ function App() {
 
   return (
     <ThemeProvider appearance={'auto'}>
-      <Input
-        placeholder="Введите название фильма"
-        value={search}
-        onChange={e => setSearch(e.target.value)}
-      />
-      {films_cards}
+      <div className="container mx-auto mt-4 p-4">
+        <Input
+          placeholder="Введите название фильма"
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          className="mb-4"
+          size="large"
+        />
+        <div className="grid gap-4">
+          {films_cards}
+        </div>
+      </div>
     </ThemeProvider>
   );
 }
