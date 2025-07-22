@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import fetchRemoteFilms from './loader/loader';
 
 function App() {
+  fetchRemoteFilms()
   return (
     <div className="App">
       <header className="App-header">
