@@ -57,13 +57,13 @@ function App() {
           />
           <div className="flex items-center space-x-2">
             <button
-              className={`px-4 py-2 rounded ${filters.includes('tg') ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+              className={`px-4 py-2 rounded ${filters.includes('tg') ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
               onClick={() => toggleFilter('tg')}
             >
               TG
             </button>
             <button
-              className={`px-4 py-2 rounded ${filters.includes('vk') ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+              className={`px-4 py-2 rounded ${filters.includes('vk') ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
               onClick={() => toggleFilter('vk')}
             >
               VK
