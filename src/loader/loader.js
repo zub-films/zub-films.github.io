@@ -11,7 +11,7 @@
  * ```
  */
 async function fetchRemoteFilms() {
-    const url = 'https://github.com/zub-films/loader/raw/refs/heads/main/output.json';
+    const url = 'https://raw.githubusercontent.com/zub-films/loader/refs/heads/main/output.json';
     const response = await fetch(url);
     if (!response.ok) {
         throw new Error(`Ошибка загрузки JSON: ${response.status}`);
