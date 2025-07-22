@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.card:hover {
+  transform: translateY(-4px);
+  transition: transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
