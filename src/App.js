@@ -70,7 +70,13 @@ function App() {
           </div>
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {films_cards}
+          {films_cards.length > 0 ? (
+            films_cards
+          ) : (
+            <div className="text-center col-span-full text-lg">
+              Упс. Такого у нас нет 😢
+            </div>
+          )}
         </div>
       </div>
     </ThemeProvider>
