@@ -10,7 +10,12 @@ function FilmCard(props) {
         btn_name = "VK";
     }
 
-    return <Button href={props.link} key={props.key}>{btn_name}</Button>;
+    return <Button
+        href={props.link}
+        key={props.key}
+        target="_blank"
+        rel="noopener noreferrer"
+    >{btn_name}</Button>;
 }
 
 function Card(props) {
