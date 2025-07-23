@@ -1,6 +1,6 @@
 import './App.css';
 import fetchRemoteFilms from './loader/loader';
-import Card from './components/film_card';
+import FilmCard from './components/film_card';
 import { ThemeProvider } from 'antd-style';
 import { Typography, Input } from 'antd';
 import { useEffect, useState } from 'react';
@@ -40,7 +40,7 @@ function App() {
   });
 
   const films_cards = filteredKeys.map(key =>
-    <Card name={key} sources={films[key]} key={key}/>
+    <FilmCard name={key} sources={films[key]} key={key}/>
   );
 
   return (
