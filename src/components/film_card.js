@@ -16,24 +16,23 @@ function Btn(props) {
             target="_blank"
             rel="noopener noreferrer"
             className="font-bold"
-            // className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         >{btn_name}</a>
     );
 }
 
 function FilmCard(props) {
+    const title = <p className="whitespace-pre-wrap">{props.name}</p>
+
     return (
-        <div className="film-card-responsive">
-            <Card
-                actions={
-                    props.sources.map((obj, i) => <Btn link={obj} key={i} />)
-                }
-            >
-                <Card.Meta
-                    title={props.name}
-                />
-            </Card>
-        </div>
+        <Card
+            actions={
+                props.sources.map((obj, i) => <Btn link={obj} key={i} />)
+            }
+        >
+            <Card.Meta
+                title={title}
+            />
+        </Card>
     );
 }
 
