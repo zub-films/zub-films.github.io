@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Button, Card, Flex, Typography } from 'antd';
+import fetchRemoteImage from '../loader/image_loader';
 
 function Btn(props) {
     let btn_name = "неизвестный";
@@ -21,6 +22,27 @@ function Btn(props) {
 }
 
 function FilmCard(props) {
+    const [imageUrl, setImageUrl] = useState(null);
+    // const [loading, setLoading] = useState(true);
+    // const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const loadImage = async () => {
+            try {
+                // setLoading(true);
+                const url = await fetchRemoteImage(props.name);
+                setImageUrl(url);
+            } catch (err) {
+                // setError(err.message);
+                console.error('Ошибка загрузки изображения:', err);
+            } finally {
+                // setLoading(false);
+            }
+        };
+
+        loadImage();
+    }, [props.name]);
+
     const title = <p className="whitespace-pre-wrap">{props.name}</p>
 
     return (
@@ -28,6 +50,7 @@ function FilmCard(props) {
             actions={
                 props.sources.map((obj, i) => <Btn link={obj} key={i} />)
             }
+            cover={<img alt="example" src={imageUrl} />}
         >
             <Card.Meta
                 title={title}
